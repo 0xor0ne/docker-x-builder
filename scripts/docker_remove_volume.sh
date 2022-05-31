@@ -21,11 +21,15 @@ ROOT_DIR=${SCRIPT_DIR}/..
 source ${SCRIPT_DIR}/common.sh
 source_env
 
-BID=`get_builder_id ${ROOT_DIR}/${ID_FILE}`
+if [ ! -z "${ID_FILE}" ] ; then
 
-VOLN="${DXB_VOL_BASE_NAME}-${BID}"
+  BID=`get_builder_id ${ROOT_DIR}/${ID_FILE}`
 
-# remove existing volume
-echo "Removing ${VOLN}"
-docker volume rm ${VOLN}
+  if [ ! -z "$(BID)" ] ; then
+    VOLN="${DXB_VOL_BASE_NAME}-${BID}"
 
+    # remove existing volume
+    echo "Removing ${VOLN}"
+    docker volume rm ${VOLN}
+  fi
+fi
