@@ -5,6 +5,13 @@ Buildroot images.
 
 ## High-level workflow
 
+Clone the repository:
+
+```bash
+git clone https://github.com/0xor0ne/docker-x-builder
+cd docker-x-builder
+```
+
 Build the docker image with:
 
 ```bash
@@ -30,13 +37,13 @@ inside the container you can do all your "cross compilation work" (see the
 
 The first time the container is executed, the entrypoint script will copy the
 Buidroot repository in `${HOME}/workspace/buildroot`.
-Note also that `${HOME}/workspace` is the directory where the persitent volume
+Note also that `${HOME}/workspace` is the directory where the persistent volume
 is mounted. Moreover, `${HOME}/shared` is a directory shared with the host. By
 default the root directory of `docker-x-builder` from the host is shared with
 the contaier.
 
-It is possible to set a custom persistent volume or a custom shared directory (or
-both) by using the options `--volume` and `--shared` with the script
+It is possible to set a custom persistent volume or a custom shared directory
+(or both) by using the options `--volume` and `--shared` with the script
 `./scripts/docker_run_inter.sh`.
 
 For example, create a new volume with:
@@ -51,7 +58,7 @@ and then run:
 ./scripts/docker_run_inter.sh --volume myvolume --shared /tmp
 ```
 
-With the previous command, the container will used the newly create volume
+With the previous command, the container will use the newly create volume
 `myvolume` and the host will share the directory `/tmp`
 
 For deleting the image, the volume and the container, run:
