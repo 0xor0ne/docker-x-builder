@@ -75,10 +75,6 @@ RUN useradd -ms /bin/bash ${user} && \
 RUN echo "${user} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 WORKDIR /home/${user}/
 
-# Copy environment file
-COPY config.env /config.env
-RUN chown ${user}:${user} /config.env
-
 # Copy utility scripts
 # TODO
 
@@ -93,6 +89,10 @@ RUN cd data && \
 
 # Copy entrypoint script
 COPY scripts/entrypoint.sh /entrypoint.sh
+
+# Copy environment file
+COPY config.env /config.env
+RUN chown ${user}:${user} /config.env
 
 USER ${user}
 ENV LC_ALL en_US.UTF-8

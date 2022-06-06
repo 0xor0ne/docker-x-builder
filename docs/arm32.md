@@ -115,7 +115,7 @@ This generates a tarball named `<TARGET-TUPLE>_sdk-buildroot.tar.gz` in
 
 In order to use the `SDK` you must extract the tarball and run the script
 `relocate-sdk.sh` located inside the extracted directory (this script must be
-exevuted only one time after the tarball extraction).
+executed only one time after the tarball extraction).
 
 Then, when you need to use the toolchain you can source the file
 `environment-setup` located inside the extracted toolchain directory. This

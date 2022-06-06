@@ -23,9 +23,11 @@ source_env
 
 DOCKFILE=${ROOT_DIR}/Dockerfile
 
-BID=`get_builder_id ${ROOT_DIR}/${DXB_ID_FILE}`
+if [ ! -z "${ID_FILE}" ] ; then
+  BID=`get_builder_id ${ROOT_DIR}/${DXB_ID_FILE}`
 
-docker stop ${DXB_CNTR_NAME}-${BID}
-docker rm ${DXB_CNTR_NAME}-${BID}
+  docker stop ${DXB_CNTR_NAME}-${BID}
+  docker rm ${DXB_CNTR_NAME}-${BID}
+fi
 
 exit 0
