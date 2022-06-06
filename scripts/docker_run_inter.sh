@@ -78,10 +78,10 @@ if [ "${IS_RUNNING}" != "${DXB_CNTR_NAME}-${BID}" ] ; then
     ${DXB_IMG_NAME} \
     ${args}
 else
-  echo "Container ${DXB_CNTR_NAME}-${BID} already running. Executing command."
+  echo "Container ${DXB_CNTR_NAME}-${BID} already running. Executing command ${args}."
   docker exec -it \
     ${DXB_CNTR_NAME}-${BID} \
-    "$@"
+    "${args}"
 fi
 
 exit 0
