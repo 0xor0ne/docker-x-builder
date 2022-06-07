@@ -119,7 +119,7 @@ executed only one time after the tarball extraction).
 
 Then, when you need to use the toolchain you can source the file
 `environment-setup` located inside the extracted toolchain directory. This
-script export a number of environment variables that will help cross-compile
+script exports a number of environment variables that will help cross-compile
 your projects using the Buildroot SDK (note that this file only exists because
 in the provided example configuration we enabled option
 BR2_PACKAGE_HOST_ENVIRONMENT_SETUP).

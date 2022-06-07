@@ -82,6 +82,10 @@ WORKDIR /home/${user}/
 RUN mkdir ${volume_dir} && chown -R ${user}:${user} ${volume_dir}
 RUN mkdir data && chown -R ${user}:${user} data
 
+# Fix terminfo database for gdb
+RUN rm -r /usr/share/terminfo/ && \
+  ln -s /lib/terminfo/ /usr/share/terminfo
+
 # Clone buildroot
 RUN cd data && \
   git clone https://github.com/buildroot/buildroot.git buildroot && \
@@ -99,5 +103,5 @@ ENV LC_ALL en_US.UTF-8
 ENV TERM xterm-256color
 ENTRYPOINT ["/entrypoint.sh"]
 
-#CMD ["/bin/bash"]
+CMD ["/bin/bash"]
 
